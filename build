@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build . -t bitplane1/voicefixer
+

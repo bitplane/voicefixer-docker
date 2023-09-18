@@ -1,0 +1,6 @@
+#!/bin/bash
+
+GPU=''
+nvidia-smi >/dev/null || GPU='--gpu all'
+
+docker run $GPU -v$(pwd):/data -u $(id -u):$(id -g) bitplane1/voicefixer voicefixer $@
