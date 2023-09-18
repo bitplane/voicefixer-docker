@@ -18,8 +18,11 @@ RUN git clone https://github.com/haoheliu/voicefixer.git && \
     cd /tmp/voicefixer && \
     git checkout 2e44f101&& \
     pip install /tmp/voicefixer --no-cache-dir && \
-    pip install --no-cache-dir -r requirements.txt && \
-    rm -rf /tmp/voicefixer
+    pip install --no-cache-dir --no-deps -r /tmp/requirements.txt && \
+    rm -rf /tmp/voicefixer /tmp/requirements.txt
+
+# fix api change bug
+ADD stft.py /usr/local/lib/python3.10/site-packages/torchlibrosa/stft.py
 
 # pwd will be mapped to here
 RUN mkdir /data
